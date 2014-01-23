@@ -2,11 +2,18 @@
 //  EBBeaconsTracker.h
 //  Copyright (c) 2014 Empatika. All rights reserved.
 //
-//  Link your project with CoreLocation.framework library.
+//  Link your project with CoreLocation.framework and CoreBluetooth.framework library.
 //
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+
+typedef NS_ENUM(NSInteger, EBRegionState) {
+    EBRegionStateInside,
+    EBRegionStateOutside,
+    EBRegionStateUnknown
+};
 
 /*
  *  EBRegion
@@ -14,6 +21,8 @@
  *  Discussion:
  *    Represents a region entity.
  *
+ *    @property NSString *uuid
+ *      UUID of the region.
  *    @property NSNumber *major
  *      Major version of the region.
  *    @property NSNumber *minor
@@ -30,6 +39,8 @@
  *  Discussion:
  *    Represents a beacon entity.
  *
+ *    @property NSString *uuid
+ *      UUID of the beacon.
  *    @property NSNumber *major
  *      Major version of the beacon.
  *    @property NSNumber *minor
@@ -56,12 +67,11 @@
  *  determineState:forRegion:
  *
  *  Discussion:
- *    Invoked when a new state for the region is available. Possible values for state are @"inside", 
- *    @"outside" and @"unknown". Works in background. 
+ *    Invoked when a new state for the region is available. Works in background. 
  *
  *    Use of this method is preferable for user notification and motivation to open the application.
  */
-- (void)determineState:(NSString *)state forRegion:(EBRegion *)region;
+- (void)determineState:(EBRegionState)state forRegion:(EBRegion *)region;
 
 /*
  *  enterRegion:
@@ -91,6 +101,16 @@
  */
 - (void)rangeBeacon:(EBBeacon *)beacon forRegion:(EBRegion *)region;
 
+/*
+ *  bluetoothDidUpdateState
+ *
+ *  Discussion:
+ *    Invoked when a new state of ble is available. Possible values are:
+ *    See CBCentralManagerState doc.
+ *
+ */
+- (void)bluetoothDidUpdateState:(CBCentralManagerState)state;
+
 @end
 
 
@@ -108,7 +128,7 @@
  *  Discussion:
  *    The unique appID that used inside SDK.
  */
-@property (nonatomic) NSString *appID;
+@property (nonatomic, strong) NSString *appID;
 
 
 /*

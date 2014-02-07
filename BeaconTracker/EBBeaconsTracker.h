@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *
  *    @property NSString *uuid
  *      UUID of the region.
- *    @property NSNumber *major
+ *    @property NSNumber *major 
  *      Major version of the region.
  *    @property NSNumber *minor
  *      Minor version of the region.
@@ -130,6 +130,14 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  */
 @property (nonatomic, strong) NSString *appID;
 
+/*
+ *  UUIDs
+ *
+ *  Discussion:
+ *    The array of regions UUID
+ */
+@property (nonatomic, strong) NSArray *uuids;
+
 
 /*
  *  sharedInstance
@@ -156,7 +164,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
 - (void)removeDelegate:(id<EBBeaconsTrackerDelegate>)delegate;
 
 /*
- *  startMonitoring:
+ *  startMonitoring
  *
  *  Discussion:
  *    Start monitoring beacons.
@@ -166,11 +174,12 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
 - (void)startMonitoring;
 
 /*
- *  stopMonitoring:
+ *  stopMonitoringRegionWithUUID:
  *
  *  Discussion:
- *    Stop monitoring beacons.
+ *    Stop monitoring beacons in region with given uuid.
  */
-- (void)stopMonitoring;
+- (void)stopMonitoringRegionWithUUID:(NSString *)uuid;
+
 
 @end

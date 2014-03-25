@@ -171,7 +171,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *
  *    Requires a valid appID. Otherwise an IllegalAppID exception will be thrown.
  */
-- (void)startMonitoring;
+- (BOOL)startMonitoring;
 
 /*
  *  stopMonitoringRegionWithUUID:
@@ -181,5 +181,8 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  */
 - (void)stopMonitoringRegionWithUUID:(NSString *)uuid;
 
+
+
+- (NSArray *)getCurrentBeaconsForRegionWithUUID:(NSString *)uuid;
 
 @end

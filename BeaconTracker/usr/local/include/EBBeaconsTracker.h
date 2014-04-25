@@ -226,5 +226,9 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  */
 - (void)removePopupView;
 
+/*
+ */
+- (void)setPopupOffset:(float)offset;
+
 
 @end

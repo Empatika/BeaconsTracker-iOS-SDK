@@ -230,5 +230,8 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  */
 - (void)setPopupOffset:(float)offset;
 
+/*
+ */
+- (void)setCustomDictionary:(NSDictionary *)dict;
 
 @end

@@ -170,7 +170,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *  addDelegate:
  *
  *  Discussion:
- *    Adds EBBeaconsTrackerDelegate object to delegates' array.
+ *    Adds EBBeaconsTrackerDelegate object (weak reference) to delegates' array.
  */
 - (void)addDelegate:(id<EBBeaconsTrackerDelegate>)delegate;
 
@@ -191,6 +191,14 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *    Requires a valid appID. Otherwise an IllegalAppID exception will be thrown.
  */
 - (BOOL)startMonitoring;
+
+/*
+ *  stopMonitoring
+ *
+ *  Discussion:
+ *    Stop monitoring beacons.
+ */
+- (void)stopMonitoringRegion;
 
 /*
  *  stopMonitoringRegionWithUUID:

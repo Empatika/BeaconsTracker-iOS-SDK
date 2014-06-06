@@ -6,14 +6,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CLBeaconRegion.h>
+
+@class CLBeacon;
 
 @interface EBBeacon : NSObject
 
 @property (nonatomic, strong) NSString *uuid;
 @property (nonatomic, strong) NSNumber *major;
 @property (nonatomic, strong) NSNumber *minor;
-@property (nonatomic) CLProximity proximity;
+@property (nonatomic) NSInteger proximity;
 @property (nonatomic) double accuracy;
 
 - (id)initWithBeacon:(CLBeacon *)beacon;

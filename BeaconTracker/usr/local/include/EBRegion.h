@@ -6,7 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CLBeaconRegion.h>
+
+@class CLBeaconRegion;
 
 @interface EBRegion : NSObject
 

@@ -5,7 +5,7 @@
 //  Copyright (c) 2014 empatika. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @class CLBeaconRegion;
 
@@ -17,5 +17,6 @@
 @property (nonatomic, strong) NSString *identifier;
 
 - (id)initWithBeaconRegion:(CLBeaconRegion *)region;
+- (NSString *)fullIdentifier;
 
 @end

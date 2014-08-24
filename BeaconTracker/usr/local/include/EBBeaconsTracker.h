@@ -6,9 +6,9 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <CoreBluetooth/CoreBluetooth.h>
+@import Foundation;
+@import UIKit;
+@import CoreBluetooth;
 
 typedef NS_ENUM(NSInteger, EBRegionState) {
     EBRegionStateInside,
@@ -103,6 +103,16 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
 - (void)rangeBeacon:(EBBeacon *)beacon forRegion:(EBRegion *)region;
 
 /*
+ *  rangeBeacons:forRegion:
+ *
+ *  Discussion:
+ *    Invoked when a new state of beacon is available in the specified region. This method has strange
+ *    behavior in background. Has a chance to be invoked while user is on lock screen.
+ *    Recommended to use only on foreground.
+ */
+- (void)rangeBeacons:(NSArray *)beacons forRegion:(EBRegion *)region;
+
+/*
  *  bluetoothDidUpdateState
  *
  *  Discussion:
@@ -139,6 +149,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *    The unique appID that used inside SDK.
  */
 @property (nonatomic, strong) NSString *appID;
+@property (nonatomic) BOOL disableBluetoothDialog;
 
 /*
  *  UUIDs
@@ -198,7 +209,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *  Discussion:
  *    Stop monitoring beacons.
  */
-- (void)stopMonitoringRegion;
+- (void)stopMonitoringRegions;
 
 /*
  *  stopMonitoringRegionWithUUID:
@@ -225,6 +236,8 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  */
 - (void)disableRules;
 
+
+- (void)fetchRules;
 
 /*
  *  removePopupView:

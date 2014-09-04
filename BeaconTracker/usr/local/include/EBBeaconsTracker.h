@@ -6,9 +6,9 @@
 //
 //
 
-#import <Foundation/Foundation.h>;
-#import <UIKit/UIKit.h>;
-#import <CoreBluetooth/CoreBluetooth.h>;
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
 typedef NS_ENUM(NSInteger, EBRegionState) {
     EBRegionStateInside,

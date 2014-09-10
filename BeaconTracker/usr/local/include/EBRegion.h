@@ -5,7 +5,7 @@
 //  Copyright (c) 2014 empatika. All rights reserved.
 //
 
-@import Foundation;
+#import <Foundation/Foundation.h>
 
 @class CLBeaconRegion;
 

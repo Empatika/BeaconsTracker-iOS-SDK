@@ -5,9 +5,7 @@
 //  Copyright (c) 2014 empatika. All rights reserved.
 //
 
-@import Foundation;
-#import "Beacon.h"
-#import "EBCoreDataManager.h"
+#import <Foundation/Foundation.h>
 
 @class CLBeacon;
 
@@ -20,7 +18,6 @@
 @property (nonatomic) double accuracy;
 
 - (id)initWithBeacon:(CLBeacon *)beacon;
-- (Beacon *)beacon;
 + (NSArray *)beaconsFromCLBeacons:(NSArray *)beacons;
 
 @end

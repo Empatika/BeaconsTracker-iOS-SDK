@@ -1,5 +1,5 @@
 //
-//  EBBeacon.h
+//  EBRegion.h
 //  EmpatikaBeaconsSDK
 //
 //  Copyright (c) 2014 empatika. All rights reserved.
@@ -7,17 +7,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class CLBeacon;
+@class CLBeaconRegion;
 
-@interface EBBeacon : NSObject
+@interface EBTRegion : NSObject
 
 @property (nonatomic, strong) NSString *uuid;
 @property (nonatomic, strong) NSNumber *major;
 @property (nonatomic, strong) NSNumber *minor;
-@property (nonatomic) NSInteger proximity;
-@property (nonatomic) double accuracy;
+@property (nonatomic, strong) NSString *identifier;
 
-- (id)initWithBeacon:(CLBeacon *)beacon;
-+ (NSArray *)beaconsFromCLBeacons:(NSArray *)beacons;
+- (id)initWithBeaconRegion:(CLBeaconRegion *)region;
+- (NSString *)fullIdentifier;
 
 @end

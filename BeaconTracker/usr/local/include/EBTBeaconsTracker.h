@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
-typedef NS_ENUM(NSInteger, EBRegionState) {
+typedef NS_ENUM(NSInteger, EBTRegionState) {
     EBRegionStateInside,
     EBRegionStateOutside,
     EBRegionStateUnknown
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *    @property NSString *identifier
  *      Identifier of the region.
  */
-@class EBRegion;
+@class EBTRegion;
 
 
 /*
@@ -51,7 +51,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *    @property double accuracy;
  *      Accuracy in meters between the beacon and the user device.
  */
-@class EBBeacon;
+@class EBTBeacon;
 
 
 /*
@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *  Discussion:
  *    Delegate for RBBeaconsTracker.
  */
-@protocol EBBeaconsTrackerDelegate <NSObject>
+@protocol EBTBeaconsTrackerDelegate <NSObject>
 
 @optional
 
@@ -72,7 +72,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *
  *    Use of this method is preferable for user notification and motivation to open the application.
  */
-- (void)determineState:(EBRegionState)state forRegion:(EBRegion *)region;
+- (void)determineState:(EBTRegionState)state forRegion:(EBTRegion *)region;
 
 /*
  *  enterRegion:
@@ -81,7 +81,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *    Invoked when the user enters a monitored region.
  *    Works only on foreground.
  */
-- (void)enterRegion:(EBRegion *)region;
+- (void)enterRegion:(EBTRegion *)region;
 
 /*
  *  exitRegion:
@@ -90,7 +90,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *    Invoked when the user exits a monitored region.
  *    Works only on foreground.
  */
-- (void)exitRegion:(EBRegion *)region;
+- (void)exitRegion:(EBTRegion *)region;
 
 /*
  *  rangeBeacon:forRegion:
@@ -100,7 +100,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *    behavior in background. Has a chance to be invoked while user is on lock screen. 
  *    Recommended to use only on foreground.
  */
-- (void)rangeBeacon:(EBBeacon *)beacon forRegion:(EBRegion *)region;
+- (void)rangeBeacon:(EBTBeacon *)beacon forRegion:(EBTRegion *)region;
 
 /*
  *  rangeBeacons:forRegion:
@@ -110,7 +110,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *    behavior in background. Has a chance to be invoked while user is on lock screen.
  *    Recommended to use only on foreground.
  */
-- (void)rangeBeacons:(NSArray *)beacons forRegion:(EBRegion *)region;
+- (void)rangeBeacons:(NSArray *)beacons forRegion:(EBTRegion *)region;
 
 /*
  *  bluetoothDidUpdateState
@@ -140,7 +140,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *  Discussion:
  *    The EBBeaconsTracker is your entry point for monitoring the beacons.
  */
-@interface EBBeaconsTracker : NSObject
+@interface EBTBeaconsTracker : NSObject
 
 /*
  *  appID
@@ -183,7 +183,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *  Discussion:
  *    Adds EBBeaconsTrackerDelegate object (weak reference) to delegates' array.
  */
-- (void)addDelegate:(id<EBBeaconsTrackerDelegate>)delegate;
+- (void)addDelegate:(id<EBTBeaconsTrackerDelegate>)delegate;
 
 /*
  *  removeDelegate:
@@ -191,7 +191,7 @@ typedef NS_ENUM(NSInteger, EBRegionState) {
  *  Discussion:
  *    Removes EBBeaconsTrackerDelegate object from delegates' array.
  */
-- (void)removeDelegate:(id<EBBeaconsTrackerDelegate>)delegate;
+- (void)removeDelegate:(id<EBTBeaconsTrackerDelegate>)delegate;
 
 /*
  *  startMonitoring

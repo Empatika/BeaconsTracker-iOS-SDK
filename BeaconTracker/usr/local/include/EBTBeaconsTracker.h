@@ -81,7 +81,7 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
  *    Invoked when the user enters a monitored region.
  *    Works only on foreground.
  */
-- (void)enterRegion:(EBTRegion *)region;
+- (void)managerDidEnterRegion:(EBTRegion *)region;
 
 /*
  *  exitRegion:
@@ -90,7 +90,7 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
  *    Invoked when the user exits a monitored region.
  *    Works only on foreground.
  */
-- (void)exitRegion:(EBTRegion *)region;
+- (void)managerDidExitRegion:(EBTRegion *)region;
 
 /*
  *  rangeBeacon:forRegion:
@@ -100,7 +100,7 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
  *    behavior in background. Has a chance to be invoked while user is on lock screen. 
  *    Recommended to use only on foreground.
  */
-- (void)rangeBeacon:(EBTBeacon *)beacon forRegion:(EBTRegion *)region;
+- (void)managerDidRangeBeacon:(EBTBeacon *)beacon forRegion:(EBTRegion *)region;
 
 /*
  *  rangeBeacons:forRegion:
@@ -110,7 +110,7 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
  *    behavior in background. Has a chance to be invoked while user is on lock screen.
  *    Recommended to use only on foreground.
  */
-- (void)rangeBeacons:(NSArray *)beacons forRegion:(EBTRegion *)region;
+- (void)managerDidRangeBeacons:(NSArray *)beacons forRegion:(EBTRegion *)region;
 
 /*
  *  bluetoothDidUpdateState

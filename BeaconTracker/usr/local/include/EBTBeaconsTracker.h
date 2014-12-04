@@ -113,6 +113,14 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
 - (void)managerDidRangeBeacons:(NSArray *)beacons forRegion:(EBTRegion *)region;
 
 /*
+ *  managerDidRangeChangeAuthorizationStatus:
+ *
+ *  Discussion:
+ *    Invoked when a new state of location manager is available.
+ */
+- (void)managerDidChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+
+/*
  *  bluetoothDidUpdateState
  *
  *  Discussion:
@@ -250,6 +258,8 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
 /*
  */
 - (void)setPopupOffset:(float)offset;
+
+- (void)showDemoView;
 
 /*
  */

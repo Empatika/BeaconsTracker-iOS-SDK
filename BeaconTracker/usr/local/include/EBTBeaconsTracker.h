@@ -235,7 +235,7 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
  */
 - (void)enableRules;
 
-
+- (CLAuthorizationStatus)getAuthorizationStatus;
 /*
  *  disableRules:
  *

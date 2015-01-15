@@ -113,14 +113,6 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
 - (void)managerDidRangeBeacons:(NSArray *)beacons forRegion:(EBTRegion *)region;
 
 /*
- *  managerDidRangeChangeAuthorizationStatus:
- *
- *  Discussion:
- *    Invoked when a new state of location manager is available.
- */
-- (void)managerDidChangeAuthorizationStatus:(CLAuthorizationStatus)status;
-
-/*
  *  bluetoothDidUpdateState
  *
  *  Discussion:
@@ -131,6 +123,14 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
 - (void)bluetoothDidUpdateState:(CBCentralManagerState)state;
 
 /*
+ *  managerDidRangeChangeAuthorizationStatus:
+ *
+ *  Discussion:
+ *    Invoked when a new state of location manager is available.
+ */
+- (void)managerDidChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+
+/*
  *  popupDidAppear
  *
  *  Discussion:
@@ -138,6 +138,15 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
  *    Use this method for setting timers or other triggers for removing popup with method removePopupView:
  */
 - (void)popupDidAppear;
+
+@end
+
+@protocol EBTPopupViewDelegate <NSObject>
+
+- (void)popupViewDidAppear;
+- (void)popupViewDidOpen;
+- (void)popupViewDidClose;
+- (void)popupViewButtonPressed;
 
 @end
 
@@ -158,6 +167,7 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
  */
 @property (nonatomic, strong) NSString *appID;
 @property (nonatomic) BOOL disableBluetoothDialog;
+@property (nonatomic, weak) id<EBTPopupViewDelegate> popupViewDelegate;
 
 /*
  *  UUIDs
@@ -211,6 +221,8 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
  */
 - (BOOL)startMonitoring;
 
+- (void)startMonitoringVisits;
+
 /*
  *  stopMonitoring
  *
@@ -235,7 +247,7 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
  */
 - (void)enableRules;
 
-- (CLAuthorizationStatus)getAuthorizationStatus;
+
 /*
  *  disableRules:
  *
@@ -264,5 +276,9 @@ typedef NS_ENUM(NSInteger, EBTRegionState) {
 /*
  */
 - (void)setCustomDictionary:(NSDictionary *)dict;
+
+- (void)startMonitoringEBTRegion:(EBTRegion *)region;
+- (void)stopMonitoringEBTRegion:(EBTRegion *)region;
+- (CLAuthorizationStatus)getAuthorizationStatus;
 
 @end
